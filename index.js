@@ -34,20 +34,10 @@ let page = axios
           cured: cured
         };
         if (!isNaN(name.infected)) {
-          //If its not number, dont add entry
           countries.push(JSON.stringify(name));
         }
       }
     });
-    fs.writeFileSync(
-      //Write statistics to file
-      "./output/countries.json",
-      "[" + countries + "]",
-      err => {}
-    );
-    // const txt = fs.readFileSync("./output/countries.json", "utf-8");
-    // console.log(JSON.parse(txt));
-  })
-  .catch(err => {
-    console.log(err);
+    //Write to file
+    fs.writeFileSync("./output/countries.json", `[${countries}]`, err => {});
   });
